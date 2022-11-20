@@ -1,0 +1,27 @@
+<html lang="en">
+<body>
+    <div class="form-container">
+        <div>
+            <form id="register-form" onsubmit="(e) => e.preventDefault()" >
+                <div class="input-group">
+                    <div>
+                        <label for="register-email">Email</label><span id="register-email-error" class="input-error hide">* Not a valid email.</span>    
+                        <input id="register-email" required type="email"> 
+                    </div>
+                    <div>
+                        <label for="register-password" >Password</label> <span id="register-password-error" class="input-error hide">* Password Not strong enough.</span>
+                        <input id="register-password" required type="password">                         
+                    </div>
+                    <div>
+                        <label for="register-confirm-password">Confirm Password</label><span id="register-conf-password-error" class="input-error hide">* passwords Not strong enough. </span> <span id="register-nonmatch-password-error" class="input-error hide">* Password do not match</span>
+                        <input id="register-confirm-password" required type="password"> 
+                    </div>
+                </div>
+                <div class="form-controls">
+                    <button id="register-submit" type="button">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

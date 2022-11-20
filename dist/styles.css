@@ -1,0 +1,83 @@
+:root {
+    --dark-bg: #273856;
+    --link-hover: #202e46;
+    --light-bg: #acaaaa;
+    --active-link: #526381;  
+    --form-button-action: goldenrod;
+    --form-link: lightskyblue;
+}
+
+.main-nav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #273856;
+}
+
+.main-nav-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    float: left;
+}
+
+.main-nav-link {
+    text-decoration: none;
+}
+
+.main-nav-link:hover:not(.active) {
+    background-color: var(--link-hover);
+    cursor: pointer;
+}
+
+.active {
+    background-color: var(--active-link);
+}
+
+.container {
+    padding: 10%;
+    background-color: var(--light-bg);
+}
+
+body {
+    background-color: var(--light-bg);
+}
+
+.input-error{
+    color: red;
+}
+
+.hide{
+    visibility: hidden;
+}
+
+.form-container{
+    border-radius: 3px;
+    background-color: var(--dark-bg);
+    padding: 20px;
+    color: white;
+}
+
+.form-container button {
+    background-color: var(--form-button-action);
+}
+
+.form-container a{
+    color: var(--form-link);
+}
+
+.input-group input{
+    width: 100%;
+    margin: 5px;
+}
+
+.input-group label {
+    color: #acaaaa;
+    margin: 5px;
+}
+
+.form-controls {
+    margin: 10px;
+}

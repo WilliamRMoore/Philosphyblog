@@ -1,0 +1,45 @@
+<html lang="en">
+<body>
+    <div class="form-container">
+        <div style="color: black;">
+            <form id="post-form" onsubmit="(e) => e.preventDefault()">
+                <div style="background-color: white;" class="input-group">
+                    <!-- <div id="post-input">
+                        <textarea id="post-input"></textarea>
+                    </div> -->
+                    <!-- Create the toolbar container -->
+                    <div style="background-color: white;" id="toolbar">
+                    </div>
+  
+                    <!-- Create the editor container -->
+                    <div style="background-color: white;" id="editor">
+                        <p>Hello World!</p>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <div id="post-sources">
+                        <label>Source 1</label>
+                        <input type="text">
+                    </div>
+                    <div id="post-tags">
+                        <label>Tags</label>
+                        <input type="text">
+                        <div id="post-suggested-tags">
+                            <ul class="tag-list">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="post-draft">Save As Draft</label>
+                        <input id="post-draft" type="checkbox">
+                    </div>
+                </div>
+                <div class="form-controls">
+                    <button id="post-submit" type="button">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
