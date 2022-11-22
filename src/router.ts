@@ -32,6 +32,11 @@ const routes = [
     description: 'Page Not Found',
   },
   {
+    location: '/',
+    template: '/templates/home.html',
+    description: 'Home',
+  },
+  {
     location: 'blog',
     template: '/dist/templates/blog.html',
     title: 'blog',
