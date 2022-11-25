@@ -1,7 +1,7 @@
 import Quill from 'quill';
 import { getElById } from '../helpers/htmlFuncs';
 import { SavePost } from '../api/post';
-import _ from 'lodash';
+import _, { range } from 'lodash';
 import { uploadPostImage } from '../api/post';
 
 let editor = {} as Quill;
@@ -63,5 +63,6 @@ async function imageHandler() {
     var fileName = file.name;
     const res = await uploadPostImage(fileName, file);
     console.log(res);
+    editor.insertEmbed(editor.getSelection()!.index, 'image', res!);
   };
 }

@@ -30,7 +30,11 @@ export async function uploadPostImage(path: string, file: File) {
     alert('Error uploading file!');
     return null;
   }
-  return data;
+  const res = await supaBase.storage
+    .from('p_images')
+    .getPublicUrl(`public/${path}`);
+
+  return res.data.publicUrl;
 }
 
 export async function removePostImages(paths: Array<string>) {
