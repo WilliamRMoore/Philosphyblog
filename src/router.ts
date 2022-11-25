@@ -2,38 +2,52 @@ import { getElById } from './helpers/htmlFuncs';
 import initRegister from './forms/register';
 import initPost from './forms/post';
 
+export function SetUpRouting() {
+  document.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (!(target as HTMLElement).classList.contains('main-nav-link')) {
+      return;
+    }
+    e.preventDefault();
+    route(target);
+    window.onpopstate = locationHandler;
+  });
+}
+
+const route = (target: HTMLElement) => {
+  let event = window.event!; // get window.event if event argument not provided
+  event.preventDefault();
+  window.history.pushState({}, '', (event.target as HTMLLinkElement).href!);
+  locationHandler();
+};
+
 export const locationHandler = async () => {
-  let location = window.location.hash.replace('#', '');
+  let location = window.location.pathname.replace('/page/', '');
 
   if (location.length === 0) {
     location = '/';
   }
-
-  console.log(location);
   const route = getRoute(location);
 
   const html = await fetch(route.template).then((response) => response.text());
+
   getElById('content')!.innerHTML = html;
+  document.title = route.title;
   activatePageListeners(location);
 };
 
-type route = {
-  location: string;
-  template: string;
-  title: string;
-  description: string;
-};
+//main-nav-link
 
 const routes = [
   {
     location: '404',
-    template: '/templates/404.html',
+    template: '/dist/templates/404.html',
     title: '404',
     description: 'Page Not Found',
   },
   {
     location: '/',
-    template: '/templates/home.html',
+    template: '/dist/templates/home.html',
     description: 'Home',
   },
   {
@@ -72,10 +86,6 @@ function getRoute(location: string) {
   return routes.find((x) => x.location === location) || routes[0];
 }
 
-window.addEventListener('hashchange', locationHandler);
-
-//locationHandler();
-
 function activatePageListeners(location: string) {
   if (location === 'register') {
     initRegister();
@@ -84,3 +94,10 @@ function activatePageListeners(location: string) {
     initPost();
   }
 }
+
+type route = {
+  location: string;
+  template: string;
+  title: string;
+  description: string;
+};

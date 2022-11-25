@@ -3,10 +3,11 @@
     <div class="form-container">
         <div style="color: black;">
             <form id="post-form" onsubmit="(e) => e.preventDefault()">
+                <div class="input-group">
+                    <label for="create-post-slug">Slug</label>
+                    <input id="create-post-slug" name="create-post-slug" type="text">
+                </div>
                 <div style="background-color: white;" class="input-group">
-                    <!-- <div id="post-input">
-                        <textarea id="post-input"></textarea>
-                    </div> -->
                     <!-- Create the toolbar container -->
                     <div style="background-color: white;" id="toolbar">
                     </div>
@@ -39,7 +40,11 @@
                     <button id="post-submit" type="button">Save</button>
                 </div>
             </form>
+
         </div>
+    </div>
+    <div id="preview">
+
     </div>
 </body>
 </html>
