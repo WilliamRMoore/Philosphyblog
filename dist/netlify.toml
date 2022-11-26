@@ -77,9 +77,7 @@
 # # which are PER-DEPLOY.
 
 # # A basic redirect rule
-[[redirects]]
-  from = "/dist/templates/*"
-  to = "/templates/:splat"
+
 
 # # A redirect rule with many of the supported properties
 # [[redirects]]
@@ -124,9 +122,27 @@
 # # The following redirect is intended for use with most SPAs
 # # that handle routing internally.
 [[redirects]]
+  from = "/page/bundle.js"
+  to = "/bundle.js"
+  status = 200
+
+[[redirects]]
+  from = "/page/styles.css"
+  to = "/styles.css"
+  status = 200
+
+[[redirects]]
   from = "/page/*"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/dist/templates/*"
+  to = "/templates/:splat"
+# [[redirects]]
+#   from = "/page/post"
+#   to = "/index.html"
+#   status = 200
 
 # [[headers]]
 #   # Define which paths this specific [[headers]] block will cover.

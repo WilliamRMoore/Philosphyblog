@@ -122,3 +122,5 @@ function siteLinkClickHandler(e: Event) {
   const target = e.target as HTMLElement;
   route(target);
 }
+
+locationHandler();
