@@ -1,6 +1,7 @@
-import { getElById } from './helpers/htmlFuncs';
+import { getElById, getElsWithClass } from './helpers/htmlFuncs';
 import initRegister from './forms/register';
 import initPost from './forms/post';
+import initLogin from './forms/login';
 
 export function SetUpRouting() {
   document.addEventListener('click', (e) => {
@@ -87,11 +88,15 @@ function getRoute(location: string) {
 }
 
 function activatePageListeners(location: string) {
+  SetUpSiteLinks();
   if (location === 'register') {
     initRegister();
   }
   if (location === 'post') {
     initPost();
+  }
+  if (location === 'login') {
+    initLogin();
   }
 }
 
@@ -101,3 +106,19 @@ type route = {
   title: string;
   description: string;
 };
+
+function SetUpSiteLinks() {
+  const els = getElsWithClass('site-link');
+  Array.from(els).forEach((x) => {
+    x.removeEventListener('click', siteLinkClickHandler);
+  });
+  Array.from(els).forEach((x) => {
+    x.addEventListener('click', siteLinkClickHandler);
+  });
+}
+
+function siteLinkClickHandler(e: Event) {
+  e.preventDefault();
+  const target = e.target as HTMLElement;
+  route(target);
+}

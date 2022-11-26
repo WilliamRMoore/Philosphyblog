@@ -1,13 +1,14 @@
 import { AuthError, User } from '@supabase/supabase-js';
 import { login, logout, getUser, getUserWithToken } from '../api/auth';
+import { SetupNav } from '../nav';
 
 const state = {
-  user: {} as User | null,
-  error: {} as AuthError | null,
+  user: null as User | null,
+  error: null as AuthError | null,
   loggedIn: false as boolean,
 };
 
-export const storeFunc = {
+export const authStore = {
   LOGIN: async (email: string, password: string) => {
     const { user, session } = await login(email, password);
     if (user) {
@@ -16,6 +17,8 @@ export const storeFunc = {
       localStorage.setItem('blog_uid', user.id);
       localStorage.setItem('blog_utk', session!.access_token);
       localStorage.setItem('blog_rtk', session!.refresh_token);
+      alert('Login Successful!');
+      SetupNav();
     }
   },
   LOGOUT: async () => {
@@ -26,6 +29,10 @@ export const storeFunc = {
       localStorage.removeItem('blog_uid');
       localStorage.removeItem('blog_utk');
       localStorage.removeItem('blog_rtk');
+      SetupNav();
+    } else {
+      state.error = res;
+      console.log(state.error);
     }
   },
   GET_USER: async () => {
@@ -37,8 +44,13 @@ export const storeFunc = {
     if (res.error) {
       localStorage.removeItem('blog_utk');
       localStorage.removeItem('blog_rtk');
+      state.error = res.error;
+      console.log(state.error);
     } else {
       state.user = res.data.user;
+      state.loggedIn = true;
+      console.log(res);
+      SetupNav();
     }
   },
   Getters: {
@@ -49,7 +61,7 @@ export const storeFunc = {
       return state.loggedIn;
     },
     error: () => {
-      state.error;
+      return state.error;
     },
   },
 };

@@ -4,6 +4,7 @@
     --light-bg: #acaaaa;
     --active-link: #526381;  
     --form-button-action: goldenrod;
+    --form-button-hover: gold;
     --form-link: lightskyblue;
 }
 
@@ -62,6 +63,10 @@ body {
 
 .form-container button {
     background-color: var(--form-button-action);
+}
+
+.form-container button:hover {
+    background-color: var(--form-button-hover);
 }
 
 .form-container a{

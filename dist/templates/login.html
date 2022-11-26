@@ -2,7 +2,7 @@
 <body>
     <div class="form-container">
         <div>
-            <form id="login-form">
+            <form id="login-form" onsubmit="(e) => e.preventDefault()">
                 <div class="input-group">
                     <div>
                         <label for="login-email">Email</label>
@@ -12,12 +12,12 @@
                     </div>
                 </div>
                 <div class="form-controls">
-                    <button type="submit">Login</button>
+                    <button type="button" id="login-submit">Login</button>
                 </div>
             </form>
             <div>
                 <p>Don't have an account?</p>
-                <a href="/register">Register here</a>
+                <a class="site-link" href="/page/register">Register here</a>
             </div>
         </div>
     </div>

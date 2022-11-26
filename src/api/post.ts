@@ -1,5 +1,6 @@
 import supaBase from '../Supabase';
 import { getElById } from '../helpers/htmlFuncs';
+import { authStore } from '../store/auth';
 
 export async function SavePost(post: string, slug: string, isDraft: boolean) {
   const date = new Date();
