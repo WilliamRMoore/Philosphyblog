@@ -3,36 +3,49 @@ import { authStore } from './store/auth';
 
 export function SetupNav() {
   const nav = getElById('main-nav-link-list');
+
   if (!authStore.Getters.loginStatus()) {
     getElById('post')?.remove();
     getElById('app-logout')?.remove();
+
     const a = createEl('a') as HTMLAnchorElement;
     a.href = '/page/login';
     a.innerText = 'Login / Register';
     a.classList.add('main-nav-link');
+
     const li = createEl('li');
     li.appendChild(a);
     li.id = 'login';
+
     nav?.appendChild(li);
   } else {
     const a = createEl('a') as HTMLAnchorElement;
+
     a.href = '#';
     a.innerText = 'Log Out';
     a.id = 'app-logout';
     a.classList.add('main-nav-link');
+
     const li = createEl('li');
+
     li.appendChild(a);
     nav?.removeChild(getElById('login')!);
     nav?.appendChild(li);
+
     const resources = nav!.firstChild!.nextSibling!.nextSibling!.nextSibling;
     const post = createEl('li');
     const postA = createEl('a') as HTMLAnchorElement;
+
     post.id = 'post';
+
     postA.href = '/page/post';
     postA.innerText = 'Post';
     postA.classList.add('main-nav-link');
+
     post.appendChild(postA);
+
     nav?.insertBefore(post, resources);
+
     LogOutListener();
   }
   const els = getElChildren(getElById('main-nav-link-list')!);

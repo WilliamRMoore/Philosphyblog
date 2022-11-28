@@ -67,6 +67,7 @@ body {
 
 .form-container button:hover {
     background-color: var(--form-button-hover);
+    cursor: pointer;
 }
 
 .form-container a{
